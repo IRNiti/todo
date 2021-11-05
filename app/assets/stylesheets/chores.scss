@@ -1,11 +1,12 @@
 // Place all the styles related to the Chores controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-$color: red;
-
-.my_style {
-  color: $color;
-}
+$color-text: black;
+$hover-color-text: #708090;
+$color-button: white;
+$hover-color-button: #bfc1c2;
+$button-background-color: #008080;
+$hover-button-background-color: #007474;
 
 .container {
   display: flex;
@@ -29,12 +30,12 @@ $color: red;
 
 .chore_item a {
   text-decoration: none;
-  color: black;
+  color: $color-text;
 }
 
 .chore_item a:hover {
   text-decoration: none;
-  color: #708090;
+  color: $hover-color-text;
 }
 
 .horizontal_line {
@@ -49,8 +50,8 @@ $color: red;
 
 .button a {
   text-decoration: none;
-  color: white;
-  background-color: #008080;
+  color: $color-button;
+  background-color: $button-background-color;
   padding: 5px;
   margin: 15px;
   border-radius: 5%;
@@ -58,6 +59,6 @@ $color: red;
 
 .button a:hover {
   text-decoration: none;
-  color: #bfc1c2;
-  background-color: #007474;
+  color: $hover-color-button;
+  background-color: $hover-button-background-color;
 }
