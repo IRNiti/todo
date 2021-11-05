@@ -1,0 +1,10 @@
+
+<div class="card card_index">
+  <h3><%= header %></h3>
+  <% chores.each do |chore| %>
+    <div class="chore_item">
+      <%= link_to chore.name, chore %>
+    </div>
+    <div class="horizontal_line hl_index"></div>
+  <% end %>
+</div>

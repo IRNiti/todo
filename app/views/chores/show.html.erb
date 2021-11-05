@@ -1,7 +1,19 @@
-<h1><%= @chore.name  %></h1>
+<div class="card card_show">
+  <h2><%= @chore.name %></h2>
+  <div class="horizontal_line hl_show"></div>
 
-<p><%= @chore.description %></p>
+  <p><%= @chore.description %></p>
+  <p><%= check_box("chore", @chore.id, {checked: @chore.done}) %> Done</p>
 
-<%= link_to "Show all", chores_path%>
-<%= link_to "Edit", edit_chore_path(@chore) %>
-<%= link_to "Delete", chore_path(@chore), method: :delete, data: { confirm: "Are you sure?"}%>
+  <div class="button-container">
+    <div class="button">
+      <%= link_to "Show all", chores_path%>
+    </div>
+    <div class="button">
+      <%= link_to "Edit", edit_chore_path(@chore) %>
+    </div>
+    <div class="button">
+      <%= link_to "Delete", chore_path(@chore), method: :delete, data: { confirm: "Are you sure?"}%>
+    </div>
+  </div>
+</div>
