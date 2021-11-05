@@ -2,7 +2,7 @@
 
 <ul>
   <% @chores.each do |chore| %>
-    <li><%= chore.name %></li>
+    <li><%= link_to chore.name, chore %></li>
   <% end %>
 </ul>
 
