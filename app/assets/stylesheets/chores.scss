@@ -86,3 +86,29 @@ $hover-button-background-color: #007474;
 .card_show h2 {
   margin: 8px;
 }
+
+.card_show h1 {
+  margin: 8px;
+}
+
+input[type="submit" i] {
+  color: $color-button;
+  background-color: $button-background-color;
+  padding: 8px;
+  margin: 15px;
+  border-radius: 7%;
+  border: none;
+}
+
+.form_input {
+  margin: 15px;
+}
+
+.form_label {
+  margin-right: 10px;
+}
+
+.form_input input {
+  border: none;
+  border-bottom: 1px solid #353839;
+}

@@ -1,22 +1,28 @@
+<div class="card card_show">
+<h1><%= header %></h1>
+<div class="horizontal_line hl_show"></div>
+
 <%= form_with model: chore do |form| %>
-  <div>
-    <%= form.label :name %><br>
+  <div class="container form_input">
+    <div class="form_label">
+      <%= form.label :name %>
+    </div>
     <%= form.text_field :name %>
     <% chore.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div>
-    <%= form.label :description %><br>
+  <div class="container form_input">
+    <%= form.label :description %>
     <%= form.text_area :description %>
     <% chore.errors.full_messages_for(:description).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div>
-    <%= form.label :done %><br>
+  <div class="container form_input">
+    <%= form.label :done %>
     <%= form.check_box :done %>
     <% chore.errors.full_messages_for(:done).each do |message| %>
       <div><%= message %></div>
@@ -27,3 +33,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>
