@@ -1,7 +1,8 @@
 class ChoresController < ApplicationController
 
   def index
-    @chores = Chore.all
+    @chores_done = Chore.where(done: true)
+    @chores_in_progress = Chore.where(done: false)
   end
 
   def show

@@ -1,3 +1,63 @@
 // Place all the styles related to the Chores controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+$color: red;
+
+.my_style {
+  color: $color;
+}
+
+.container {
+  display: flex;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding: 16px 16px 0 16px;
+  margin: 15px;
+  flex: 1;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.chore_item {
+  margin-left: 10px;
+}
+
+.chore_item a {
+  text-decoration: none;
+  color: black;
+}
+
+.chore_item a:hover {
+  text-decoration: none;
+  color: #708090;
+}
+
+.horizontal_line {
+  display: block;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+  height:auto;
+  overflow:visible;
+}
+
+.button a {
+  text-decoration: none;
+  color: white;
+  background-color: #008080;
+  padding: 5px;
+  margin: 15px;
+  border-radius: 5%;
+}
+
+.button a:hover {
+  text-decoration: none;
+  color: #bfc1c2;
+  background-color: #007474;
+}

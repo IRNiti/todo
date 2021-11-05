@@ -1,9 +1,26 @@
-<h1>These are your chores</h1>
+<h1>These are your current chores</h1>
 
-<ul>
-  <% @chores.each do |chore| %>
-    <li><%= link_to chore.name, chore %></li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="card">
+    <h3>Chores Done</h3>
+    <% @chores_done.each do |chore| %>
+      <div class="chore_item">
+        <%= link_to chore.name, chore %>
+      </div>
+      <div class="horizontal_line"></div>
+    <% end %>
+  </div>
+  <div class="card">
+    <h3>Chores In Progress</h3>
+    <% @chores_in_progress.each do |chore| %>
+      <div class="chore_item">
+        <%= link_to chore.name, chore %>
+      </div>
+      <div class="horizontal_line"></div>
+    <% end %>
+  </div>
+</div></br>
 
-<%= link_to "New Chore", new_chore_path %>
+<div class="button">
+  <%= link_to "New Chore", new_chore_path %>
+</div>
