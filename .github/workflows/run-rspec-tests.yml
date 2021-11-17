@@ -44,5 +44,4 @@ jobs:
         bundle exec rails db:migrate
         bin/rails server &
         sleep 10 &&
-        curl http://localhost:3000 &&
         bundle exec rspec spec
