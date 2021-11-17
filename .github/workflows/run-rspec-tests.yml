@@ -27,8 +27,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.7
     - name: Build and test with Rspec
@@ -42,4 +42,7 @@ jobs:
         bundle install --jobs 4 --retry 3
         bundle exec rails db:create
         bundle exec rails db:migrate
+        bin/rails server &
+        sleep 10 &&
+        curl http://localhost:3000 &&
         bundle exec rspec spec
