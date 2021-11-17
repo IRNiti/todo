@@ -31,6 +31,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.7
+        bundler-cache: true
     - name: Build and test with Rspec
       env:
         PGHOST: 127.0.0.1
