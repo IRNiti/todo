@@ -37,8 +37,10 @@ gem 'simplecov', require: false, group: :test
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # User rspec for testing
+  # Use rspec for testing
   gem 'rspec-rails', ">= 3.9.0"
+  # Use factory bot to mock data in tests
+  gem 'factory_bot_rails'
 end
 
 group :development do
