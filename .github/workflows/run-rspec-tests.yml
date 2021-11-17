@@ -31,7 +31,7 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.7
-    - name: Build and test with Rake
+    - name: Build and test with Rspec
       env:
         PGHOST: 127.0.0.1
         PGUSER: postgres
