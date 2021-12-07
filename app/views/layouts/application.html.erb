@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",   root_path %></li>
+            <li><%= link_to "Log in", signup_path %></li>
+          </ul>
+        </nav>
     <%= yield %>
   </body>
 </html>
