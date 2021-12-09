@@ -32,6 +32,10 @@ $hover-button-background-color: #007474;
   margin: 15px;
 }
 
+h1 {
+  margin-left: 15px;
+}
+
 .chore_item {
   margin-left: 10px;
 }
@@ -63,52 +67,10 @@ $hover-button-background-color: #007474;
   margin: 5px;
 }
 
-.button a {
-  text-decoration: none;
-  color: $color-button;
-  background-color: $button-background-color;
-  padding: 8px;
-  margin: 15px;
-  border-radius: 7%;
-}
-
-.button a:hover {
-  text-decoration: none;
-  color: $hover-color-button;
-  background-color: $hover-button-background-color;
-}
-
-.button-container {
-  display: inline-flex;
-  margin-top: 10px;
-}
-
 .card_show h2 {
   margin: 8px;
 }
 
 .card_show h1 {
   margin: 8px;
-}
-
-input[type="submit" i] {
-  color: $color-button;
-  background-color: $button-background-color;
-  padding: 8px;
-  margin: 15px;
-  border-radius: 7%;
-  border: none;
-}
-
-.form_input {
-  margin: 15px;
-}
-
-.form_label {
-  margin-right: 10px;
-}
-
-.form_input input {
-  border: none;
-  border-bottom: 1px solid #353839;
 }
