@@ -1,4 +1,14 @@
-<div class="card card_show">
-  <h2><%= @user.name %></h2> 
-  <%= @user.email %>
-</div>
+<% if logged_in? %>
+  <% if @current_user == @user %>
+    <div class="card card_show">
+      <h2><%= @user.name %></h2> 
+      <%= @user.email %>
+    </div>
+  <% else %>
+    <div class="alert alert_danger">
+      You do not have access to this information.
+    </div>
+  <% end %>
+<% else %>
+  <% controller.redirect_to login_path %>
+<% end %>
