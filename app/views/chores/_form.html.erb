@@ -24,6 +24,20 @@
     </div>
 
     <div class="container form_input">
+      <div class="form_label">
+        <%= form.label "Assigned to" %>
+      </div>
+      <select name="chore[user_id]">
+          <% User.all.each do |user| %>
+              <option value="<%= user.id %>"><%= user.name %></option>
+          <% end %>
+      </select>
+      <% chore.errors.full_messages_for(:user_id).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="container form_input">
       <%= form.label :done %>
       <%= form.check_box :done %>
       <% chore.errors.full_messages_for(:done).each do |message| %>

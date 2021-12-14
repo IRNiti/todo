@@ -3,6 +3,11 @@
   <div class="horizontal_line hl_show"></div>
 
   <p><%= @chore.description %></p>
+  <% if @chore.user_id == nil %>
+    <p>Unassigned</p>
+  <% else %>
+    <p>Assigned to <%= @chore.user.name %></p>
+  <% end %>
   <p><%= check_box("chore", @chore.id, {checked: @chore.done}) %> Done</p>
 
   <div class="button-container">
