@@ -1,9 +1,10 @@
 <% if logged_in? %>
   <% if @current_user == @user %>
-    <div class="card card_show">
-      <h2><%= @user.name %></h2> 
-      <%= @user.email %>
-    </div>
+    <h2><%= @user.name %> | <%= @user.email %></h2>
+    <div class="container">
+      <%= render "shared/card", chores: @chores_done, header: "Chores Done", source: "profile"%>
+      <%= render "shared/card", chores: @chores_in_progress, header: "Chores In Progress", source: "profile"%>
+  </div></br>
   <% else %>
     <div class="alert alert_danger">
       You do not have access to this information.

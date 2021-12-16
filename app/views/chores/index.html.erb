@@ -1,10 +1,14 @@
-<h1>These are your current chores</h1>
+<% if logged_in? %>
+  <h1>These are the current chores to be completed</h1>
 
-<div class="container">
-  <%= render "card", chores: @chores_done, header: "Chores Done"%>
-  <%= render "card", chores: @chores_in_progress, header: "Chores In Progress"%>
-</div></br>
+  <div class="container">
+    <%= render "shared/card", chores: @chores_done, header: "Chores Done", source: "index"%>
+    <%= render "shared/card", chores: @chores_in_progress, header: "Chores In Progress", source: "index"%>
+  </div></br>
 
-<div class="button">
-  <%= link_to "New Chore", new_chore_path %>
-</div>
+  <div class="button">
+    <%= link_to "New Chore", new_chore_path %>
+  </div>
+<% else %>
+  <h1>Welcome to the Todo App</h1>
+<% end %>

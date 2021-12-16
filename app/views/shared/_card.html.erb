@@ -4,6 +4,13 @@
   <% chores.each do |chore| %>
     <div class="chore_item">
       <%= link_to chore.name, chore %>
+      <% if source == "index"%> | 
+        <% if chore.user_id == nil %>
+          <span>Unassigned</span>
+        <% else %>
+          <span>Assigned to <%= chore.user.name %></span>
+        <% end %>
+      <% end %>
     </div>
     <div class="horizontal_line hl_index"></div>
   <% end %>

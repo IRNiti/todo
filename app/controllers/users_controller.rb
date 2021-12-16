@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @chores_done = Chore.where(done: true, user_id: params[:id])
+    @chores_in_progress = Chore.where(done: false, user_id: params[:id])
   end
 
   def new
