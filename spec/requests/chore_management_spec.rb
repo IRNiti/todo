@@ -2,7 +2,14 @@ require "rails_helper"
 
 RSpec.describe "Chore management", :type => :request do
 
-  it "returns all chores at index" do 
+  it "returns generic home page if user is not logged in" do
+    get chores_path 
+    expect(response.body).to include("Welcome to the Todo App")
+  end
+
+  it "returns all chores at index for logged in user" do 
+    user = create(:user)
+    post login_path, params: { session: { email: "betty.rubble@gmail.com", password: "foobarzz" } }
     get chores_path 
     expect(response.body).to include("Chores Done")
     expect(response.body).to include("Chores In Progress")
