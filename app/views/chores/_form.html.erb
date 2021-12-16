@@ -30,7 +30,11 @@
       <select name="chore[user_id]">
           <option value="<%= nil %>">Unassigned</option>
           <% User.all.each do |user| %>
+            <% if chore.user_id == user.id %>
+              <option value="<%= user.id %>" selected><%= user.name %></option>
+            <% else %>
               <option value="<%= user.id %>"><%= user.name %></option>
+            <% end %>
           <% end %>
       </select>
       <% chore.errors.full_messages_for(:user_id).each do |message| %>
