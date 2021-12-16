@@ -28,6 +28,7 @@
         <%= form.label "Assigned to" %>
       </div>
       <select name="chore[user_id]">
+          <option value="<%= nil %>">Unassigned</option>
           <% User.all.each do |user| %>
               <option value="<%= user.id %>"><%= user.name %></option>
           <% end %>

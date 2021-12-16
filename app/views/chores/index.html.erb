@@ -1,5 +1,5 @@
 <% if logged_in? %>
-  <h1>These are the current chores to be completed</h1>
+  <h1>These are the chores to be completed this week</h1>
 
   <div class="container">
     <%= render "shared/card", chores: @chores_done, header: "Chores Done", source: "index"%>
