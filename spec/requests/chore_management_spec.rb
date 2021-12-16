@@ -9,7 +9,15 @@ RSpec.describe "Chore management", :type => :request do
   end
 
   it "creates a Chore and redirects to the Chores's page" do
-    post chores_path, params: { chore: {name: "Dishes", description: "Do all the dishes", done: false} }
+    user = create(:user)
+    post chores_path, params: { 
+                        chore: {
+                          name: "Dishes", 
+                          description: "Do all the dishes", 
+                          done: false,
+                          user_id: user.id
+                        } 
+                      }
     expect(response).to redirect_to(chore_path(Chore.last))
   end
 
@@ -19,7 +27,8 @@ RSpec.describe "Chore management", :type => :request do
   end
 
   it "updates a Chore and redirects to the Chore's page" do 
-    create(:chore)
+    user = create(:user)
+    create(:chore, user_id: user.id)
     put chore_path(Chore.last), params: { chore: { name: "Updated name" }}
     expect(response).to redirect_to(chore_path(Chore.last))
     get chore_path(Chore.last)
@@ -27,13 +36,15 @@ RSpec.describe "Chore management", :type => :request do
   end
 
   it "updates a Chore and fails due to validation errors" do 
-    create(:chore)
+    user = create(:user)
+    create(:chore, user_id: user.id)
     put chore_path(Chore.last), params: { chore: { description: "short" }}
     expect(response.body).to include("Description is too short")
   end
 
   it "deletes an existing Chore and redirects to index" do 
-    create(:chore)
+    user = create(:user)
+    create(:chore, user_id: user.id)
     delete chore_url(Chore.last)
     expect(response).to redirect_to(root_path)
   end
