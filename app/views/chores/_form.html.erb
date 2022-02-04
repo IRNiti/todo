@@ -3,6 +3,13 @@
   <div class="horizontal_line hl_show"></div>
 
   <%= form_with model: chore do |form| %>
+    <% if defined?(new_chore) %>
+    <div class="custom-control custom-switch">
+      <%= form.check_box :recurring, class: "custom-control-input", id: "task_type", onchange: "valueChanged()"%>
+      <label class="custom-control-label" for="customSwitch1">Recurring Task</label>
+    </div>
+    <% end %>
+
     <div class="container form_input">
       <div class="form_label">
         <%= form.label :name %>
@@ -23,35 +30,81 @@
       <% end %>
     </div>
 
-    <div class="container form_input">
-      <div class="form_label">
-        <%= form.label "Assigned to" %>
-      </div>
-      <select name="chore[user_id]">
-          <option value="<%= nil %>">Unassigned</option>
-          <% User.all.each do |user| %>
-            <% if chore.user_id == user.id %>
-              <option value="<%= user.id %>" selected><%= user.name %></option>
-            <% else %>
-              <option value="<%= user.id %>"><%= user.name %></option>
+    
+      <div class="container form_input" name="single_task">
+        <div class="form_label">
+          <%= form.label "Assigned to" %>
+        </div>
+        <select name="chore[user_id]">
+            <option value="<%= nil %>">Unassigned</option>
+            <% User.all.each do |user| %>
+              <% if chore.user_id == user.id %>
+                <option value="<%= user.id %>" selected><%= user.name %></option>
+              <% else %>
+                <option value="<%= user.id %>"><%= user.name %></option>
+              <% end %>
             <% end %>
-          <% end %>
-      </select>
-      <% chore.errors.full_messages_for(:user_id).each do |message| %>
-        <div><%= message %></div>
-      <% end %>
-    </div>
+        </select>
+        <% chore.errors.full_messages_for(:user_id).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
 
-    <div class="container form_input">
-      <%= form.label :done %>
-      <%= form.check_box :done %>
-      <% chore.errors.full_messages_for(:done).each do |message| %>
-        <div><%= message %></div>
-      <% end %>
-    </div>
+      <div class="container form_input" name="single_task">
+        <%= form.label :done %>
+        <%= form.check_box :done %>
+        <% chore.errors.full_messages_for(:done).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    
+
+    
+      <div class="container form_input" style="display: none" name="recurring_task">
+        <label>Recurrence </label>
+        <%= form.text_field :repeat_interval %>
+      </div>
+      <div class="container form_input" style="display: none" name="recurring_task">
+        <label>Start Date </label>
+        <%= form.date_field :start_date %>
+      </div>
+      <div class="container form_input" style="display: none" name="recurring_task">
+        <label>End Date </label>
+        <%= form.date_field :end_date %>
+      </div>
+    
 
     <div>
       <%= form.submit %>
     </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+
+    window.onload = function pageInit(){
+      console.log('on page init');
+    }
+
+    function valueChanged(){
+        var checkbox = document.getElementById('task_type');
+        var recurring_task = document.getElementsByName('recurring_task');
+        var single_task = document.getElementsByName('single_task');
+        
+        if(checkbox.checked){
+          for(let rt of recurring_task){
+            rt.style.display = "flex";
+          }
+          for(let st of single_task){
+            st.style.display = "none";
+          }
+        } else {
+          for(let rt of recurring_task){
+            rt.style.display = "none";
+          }
+          for(let st of single_task){
+            st.style.display = "flex";
+          }
+        }
+    }
+</script>
