@@ -1,3 +1,3 @@
 class Recurrence < ApplicationRecord
-    belongs_to :chore
+    has_many :chores, dependent: :destroy
 end

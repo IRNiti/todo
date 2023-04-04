@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  attr_reader :user, :chores_in_progress, :chores_done
   def show
     @user = User.find(params[:id])
     @chores_done = Chore.where(done: true, user_id: params[:id])

@@ -1,0 +1,5 @@
+<h1>What type of task are you trying to create?</h1>
+<%= form_with do |form| %>
+  <%= form.select :type, [["Single Task", 0], ["Recurring Task", 1]] %>
+  <%= form.submit "Next" %>
+<% end %>

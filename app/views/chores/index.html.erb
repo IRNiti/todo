@@ -6,8 +6,13 @@
     <%= render "shared/card", chores: @chores_in_progress, header: "Chores In Progress", source: "index"%>
   </div></br>
 
+  <h1>These are the active recurring chores</h1>
+  <div class="container">
+    <%= render "shared/card", chores: @recurring_chores, header: "Recurring Chores", source: "recurrence"%>
+  </div></br>
+
   <div class="button">
-    <%= link_to "New Chore", new_chore_path %>
+    <%= link_to "New Chore", test_path %>
   </div>
 <% else %>
   <h1>Welcome to the Todo App</h1>

@@ -1,5 +1,6 @@
 class ChoresController < ApplicationController
 
+  attr_reader :chores_done, :chores_in_progress, :recurring_chores
   def index
     @chores_done = Chore.where(done: true)
     @chores_in_progress = Chore.where(done: false)
@@ -15,25 +16,10 @@ class ChoresController < ApplicationController
   end
 
   def create
-    puts chore_params
-    @recurring_task
-    @chore
-    if chore_params[:recurring].eql?('1')
-      @chore.recurrence.new
-      @recurring_task = Recurrence.new(name: recurrence_params[:name],
-                                        description: recurrence_params[:description],
-                                        start_date: recurrence_params[:start_date],
-                                        end_date: recurrence_params[:end_date],
-                                        repeat_interval: recurrence_params[:repeat_interval],
-                                        chore: @chore)
-    else 
-      @chore = Chore.new(chore_params)
-    end
+    @chore = Chore.new(chore_params)
 
-    if defined?(@chore) && @chore.save
-      redirect_to @chore 
-    elsif defined?(@recurring_task) && @recurring_task.save
-      redirect_to root_path
+    if @chore.save
+      redirect_to @chore
     else  
       render :new
     end
@@ -67,21 +53,7 @@ class ChoresController < ApplicationController
                             :description, 
                             :done, 
                             :user_id, 
-                            :recurring,
-                            :start_date,
-      :end_date,
-      :repeat_interval
                             )
-  end
-
-  def recurrence_params
-    params.permit(
-      :name,
-      :description,
-      :start_date,
-      :end_date,
-      :repeat_interval
-    )
   end
 
 end
